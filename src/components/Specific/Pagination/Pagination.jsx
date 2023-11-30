@@ -11,7 +11,7 @@ const Pagination = ({pageCount,setPage}) => {
     <>
       
       <ReactPaginate
-        className="pagination pagination-sm justify-content-center"
+        className="pagination justify-content-end"
         pageClassName="page-item"
         pageLinkClassName="page-link"
         previousClassName="page-item"
