@@ -14,7 +14,5 @@ Rick And Morty Web es un sitio web diseñado para consumir la API https://rickan
 - **React-router-dom**
 - **React-select**
 
-
-
 ## Estado del Proyecto
 En Desarrollo
