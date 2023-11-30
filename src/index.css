@@ -1,0 +1,12 @@
+/* body{
+background-color: #202329;
+} */
+.text-bg-Alive{
+  background-color:var(--bs-success);
+}
+.text-bg-Dead{
+  background-color:var(--bs-danger);
+}
+.text-bg-unknown{
+  background-color:var(--bs-dark-bg-subtle);
+}
