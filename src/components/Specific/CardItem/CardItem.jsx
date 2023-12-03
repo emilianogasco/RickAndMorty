@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const CardItem = ({ name, status, species, image, gender }) => {
+const CardItem = ({ name, status, species, image, gender, id }) => {
   return (
     <>
       {/* <div class="card" aria-hidden="true">
@@ -26,7 +27,8 @@ const CardItem = ({ name, status, species, image, gender }) => {
       <div className="card" >
         <img src={image} className="card-img-top" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">{name}</h5>
+          <Link to={`/Character/${id}`} className="card-title h5 text-decoration-none">{name}</Link>
+          {/* <h5 className="card-title">{name}</h5> */}
           <p className="card-text">Species: {species}</p>
           <p className="card-text">Gender: {gender}</p>
           <p className="card-text">Status: <span className={`badge rounded-pill text-bg-${status}`}>{status}</span></p>

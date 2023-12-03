@@ -1,140 +1,94 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Select from 'react-select';
-import Pagination from '../../components/Specific/Pagination/Pagination';
-import Buscador from '../../components/Specific/Buscador/Buscador'
-import CardItem from '../../components/Specific/CardItem/CardItem'
+import { useParams } from 'react-router-dom'
+import Spinner from '../../components/Specific/Spinner/Spinner'
 import Alert from '../../components/Specific/Alert/Alert'
-import Spinner from '../../components/Specific/Spinner/Spinner';
-import { optionStatusCharacter, optionGenderCharacter, optionSpeciesCharacter } from './dataCharacter'
 
-
-const Home = () => {
-  const [character, setCharacter] = useState([]);
-  const [name, setName] = useState('');
-  const [page, setPage] = useState(0);
-  const [pageCount, setPageCount] = useState(0);
+const Character = () => {
   const [error, setError] = useState(false);
-  const [spinnerDisplay, setSpinnerDisplay] = useState();
-  const [statusCharacter, setStatusCharacter] = useState({ value: '' });
-  const [genderCharacter, setGenderCharacter] = useState({ value: '' });
-  const [speciesCharacter, setSpeciesCharacter] = useState({ value: '' });
+  const [character, setCharacter] = useState([]);
+  const [spinnerDisplay, setSpinnerDisplay] = useState(true);
 
+  let { id } = useParams();
+  // console.log(id)
   useEffect(() => {
     setSpinnerDisplay(true)
-    axios.get(`${import.meta.env.VITE_CHARACTER_URL}/?page=${page}&name=${name}&status=${statusCharacter.value}&gender=${genderCharacter.value}&species=${speciesCharacter.value}`)
+    axios.get(`${import.meta.env.VITE_CHARACTER_URL}/${id}`)
       .then(({ data }) => {
-        setCharacter(data.results)
-        setPageCount(data.info.pages)
-        setError(false);
+        console.log(data)
+        setCharacter(data)
         setSpinnerDisplay(false)
       })
       .catch((error) => {
         console.log(error)
-        setError(true);
-        setPageCount(0)
         setSpinnerDisplay(true)
+        setError(true)
       })
       .finally()
 
-  }, [name, statusCharacter, genderCharacter, speciesCharacter, page]);
-
-
-  const statusSelectChange = (value) => {
-    setStatusCharacter(value)
-    setPage(1)
-  }
-  const statusGenderChange = (value) => {
-    setGenderCharacter(value)
-    setPage(1)
-  }
-  const statusSpeciesChange = (value) => {
-    setSpeciesCharacter(value)
-    setPage(1)
-  }
+  }, []);
 
   return (
+    <>
+      <section className="vh-100" >{/* style="background-color: #f4f5f7;"*/}
+        <div className="container py-5 h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col col-lg-6 mb-4 mb-lg-0">
+              <div className="card mb-3" style={{ borderRadius: '1rem' }}>
+                <div className="row g-0">
+                  {spinnerDisplay ? <Spinner display={spinnerDisplay} /> :
+                    <>
+                      <div className="col-md-4 gradient-custom text-center ">
+                        <img src={character.image} alt="Avatar" className="img-fluid my-3 w-75 " style={{ borderRadius: '50%' }} />
+                        <h5>{character.name}</h5>
+                        <p><i className={`bi bi-circle-fill text-${character.status}`}></i> {character.status}</p>
+                      </div>
+                      <div className="col-md-8">
+                        <div className="card-body p-3">
+                          <h6>Information</h6>
+                          <hr className=" mb-4" />
+                          <div className="row pt-1">
+                            <div className="col-6 mb-3">
+                              <h6>Origin</h6>
+                              <p className="text-muted">{character.origin.name}</p>
+                            </div>
+                            <div className="col-6 mb-3">
+                              <h6>Phone</h6>
+                              <p className="text-muted">123 456 789</p>
+                            </div>
+                          </div>
+                          <h6>Projects</h6>
+                          <hr className="mb-4" />
+                          <div className="row pt-1">
+                            <div className="col-6 mb-3">
+                              <h6>Recent</h6>
+                              <p className="text-muted">Lorem ipsum</p>
+                            </div>
+                            <div className="col-6 mb-3">
+                              <h6>Most Viewed</h6>
+                              <p className="text-muted">Dolor sit amet</p>
+                            </div>
+                          </div>
+                          {/* <div className="d-flex justify-content-start">
+                            <a href="#!"><i className="fab fa-facebook-f fa-lg me-3"></i></a>
+                            <a href="#!"><i className="fab fa-twitter fa-lg me-3"></i></a>
+                            <a href="#!"><i className="fab fa-instagram fa-lg"></i></a>
+                          </div> */}
 
-    <div className='container'>
+                        </div>
+                      </div>
+                    </>
+                  }
 
-      <div className="row mt-3">
-        <div className="col-12 col-md-4 mb-3 ">
-          <div className='mb-2' >
-            <label htmlFor="Status" className="form-label" >Status</label>
-            <Select
-              onChange={statusSelectChange}
-              defaultValue={[optionStatusCharacter[0]]}
-              // isMulti
-              name="Status Character"
-              options={optionStatusCharacter}
-              className="basic-multi-select text-dark "
-              classNamePrefix="select"
-            />
-          </div>
-          <div className='mb-2'>
-            <label htmlFor="Gender" className="form-label">Gender</label>
-            <Select
-              onChange={statusGenderChange}
-              defaultValue={[optionGenderCharacter[0]]}
-              // isMulti
-              name="Gender"
-              options={optionGenderCharacter}
-              className="basic-multi-select text-dark "
-              classNamePrefix="select"
-            />
-          </div>
-          <div className='mb-2'>
-            <label htmlFor="Species" className="form-label">Species</label>
-            <Select
-              onChange={statusSpeciesChange}
-              defaultValue={[optionSpeciesCharacter[0]]}
-              // isMulti
-              name="Status Character"
-              options={optionSpeciesCharacter}
-              className="basic-multi-select text-dark " 
-              classNamePrefix="select"
-            />
-          </div>
-
-
-        </div>
-        <div className="col-12 col-md-8 ">
-          <Buscador
-            placeHolder={'Escribe un nombre'}
-            name={name}
-            setName={setName}
-          />
-          <div className="row mt-2">
-          {error ?
-              <Alert
-                texto={`No se encontro resultado`}
-                color={'danger'}
-              /> :''
-            }
-            {spinnerDisplay ?
-              <Spinner display={spinnerDisplay} /> :
-              character?.map((element) => (
-                <div
-                  className="col-12 col-md-4 mb-3"
-                  key={element.id}
-                >
-                  <CardItem
-                    name={element.name}
-                    status={element.status}
-                    species={element.species}
-                    image={element.image}
-                    gender={element.gender}
-                  />
                 </div>
-              ))}
-           
-           
-            <Pagination pageCount={pageCount} setPage={setPage} />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section >
+    </>
+
   )
 }
 
-export default Home
+export default Character

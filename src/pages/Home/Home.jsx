@@ -31,6 +31,8 @@ const Home = () => {
           randomCharacters.push(randomCharacter);
           availableCharacters.splice(randomIndex, 1);
         }
+        console.log(randomCharacters)
+        // randomCharacters.map(elemnt => console.log(elemnt.location))
         setCharacter(randomCharacters)
         setSpinnerDisplay(false)
         setUpdate(false)
@@ -60,6 +62,7 @@ const Home = () => {
         link={'https://rickandmortyapi.com/'}
       />
       <div className="row justify-content-center mx-auto py-3 text-center">
+       
         {error ?
           <Alert
             texto={`No se encontro resultado`}
@@ -76,7 +79,15 @@ const Home = () => {
           <Spinner display={spinnerDisplay} />
           :
           character.map((character, index) => (
-            <Item key={index} name={character.name} species={character.species} img={character.image} status={character.status} />
+            <Item key={index}
+            name={character.name}
+            species={character.species}
+            img={character.image}
+            status={character.status}
+            location={character.location}
+            origin={character.origin}
+            id={character.id}
+            />
           ))
 
         }

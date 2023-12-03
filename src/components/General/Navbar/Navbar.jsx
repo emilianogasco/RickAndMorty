@@ -29,7 +29,8 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mx-auto">
               <ButtonNav texto={'Home'} />
-              <ButtonNav texto={'Character'} />
+              <ButtonNav texto={'Characters'} />
+              {/* <ButtonNav texto={'Character'} /> */}
             </ul>
             {theme == "light" ? 
             <button className="btn btn-outline-dark btn-sm" onClick={handleChangeTheme}><i className="bi bi-moon-stars-fill"></i></button>

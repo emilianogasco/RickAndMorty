@@ -1,5 +1,6 @@
 import React from 'react'
 import Home from './pages/Home/Home'
+import Characters from './pages/Characters/Characters'
 import Character from './pages/Character/Character'
 import Navbar from './components/General/Navbar/Navbar'
 import Footer from './components/General/Footer/Footer'
@@ -16,7 +17,8 @@ const App = () => {
             <Route path="/home" element={<Home />}/>
 
           </Route>
-          <Route path="Character" element={<Character />} />
+          <Route path="Characters" element={<Characters />} />
+          <Route path="Character/:id" element={<Character/>} />
           <Route path="*" element={'error'} />
         </Routes>
         <Footer/>
