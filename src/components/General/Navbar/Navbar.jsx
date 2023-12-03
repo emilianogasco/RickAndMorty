@@ -34,7 +34,7 @@ const Navbar = () => {
             {theme == "light" ? 
             <button className="btn btn-outline-dark btn-sm" onClick={handleChangeTheme}><i className="bi bi-moon-stars-fill"></i></button>
             :
-            <button className="btn btn-outline-light btn-sm" onClick={handleChangeTheme}><i className="bi bi-moon-stars-fill"></i></button>
+            <button className="btn btn-outline-light btn-sm" onClick={handleChangeTheme}><i className="bi bi-sun-fill"></i></button>
 
             }
             
