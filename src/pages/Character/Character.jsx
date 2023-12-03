@@ -21,11 +21,9 @@ const Home = () => {
   const [speciesCharacter, setSpeciesCharacter] = useState({ value: '' });
 
   useEffect(() => {
-   axios.get(`${import.meta.env.VITE_CHARACTER_URL}/?page=${page}&name=${name}&status=${statusCharacter.value}&gender=${genderCharacter.value}&species=${speciesCharacter.value}`
-
-    )
-    .then(({ data }) => {
-        setSpinnerDisplay(true)
+    setSpinnerDisplay(true)
+    axios.get(`${import.meta.env.VITE_CHARACTER_URL}/?page=${page}&name=${name}&status=${statusCharacter.value}&gender=${genderCharacter.value}&species=${speciesCharacter.value}`)
+      .then(({ data }) => {
         setCharacter(data.results)
         setPageCount(data.info.pages)
         setError(false);
@@ -35,6 +33,7 @@ const Home = () => {
         console.log(error)
         setError(true);
         setPageCount(0)
+        setSpinnerDisplay(true)
       })
       .finally()
 
@@ -106,32 +105,30 @@ const Home = () => {
             setName={setName}
           />
           <div className="row mt-2">
-            {<Spinner display={spinnerDisplay} />}
-            {
-              error && <Alert
+          {error ?
+              <Alert
                 texto={`No se encontro resultado`}
                 color={'danger'}
-              />
+              /> :''
             }
-            {
-              !error && (
-                character?.map((element) => (
-                  <div
-                    className="col-12 col-md-4 mb-3"
-                    key={element.id}
-                  >
-                    <CardItem
-                      name={element.name}
-                      status={element.status}
-                      species={element.species}
-                      image={element.image}
-                      gender={element.gender}
-                    />
-                  </div>
-                ))
-
-              )
-            }
+            {spinnerDisplay ?
+              <Spinner display={spinnerDisplay} /> :
+              character?.map((element) => (
+                <div
+                  className="col-12 col-md-4 mb-3"
+                  key={element.id}
+                >
+                  <CardItem
+                    name={element.name}
+                    status={element.status}
+                    species={element.species}
+                    image={element.image}
+                    gender={element.gender}
+                  />
+                </div>
+              ))}
+           
+           
             <Pagination pageCount={pageCount} setPage={setPage} />
           </div>
         </div>
