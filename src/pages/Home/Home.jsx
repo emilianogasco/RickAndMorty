@@ -55,11 +55,11 @@ const Home = () => {
       <Headboard
         titulo={'The Rick and Morty Web'}
         subtitulo={'Esta es una pagina web para utilizar la API de rick and morty'}
-        background={'light'}
-        textColor={'dark'}
+        // background={'light'}
+        // textColor={'dark'}
         link={'https://rickandmortyapi.com/'}
       />
-      <div className="row justify-content-center mx-auto py-3 text-center bg-dark">
+      <div className="row justify-content-center mx-auto py-3 text-center">
         {error ?
           <Alert
             texto={`No se encontro resultado`}

@@ -10,7 +10,7 @@ const HorizontalCard = ({name,species,img, status}) => {
           <div className="col-md-8 ">
             <div className="card-body text-start ">
               <h5 className="card-title ">{name}</h5>
-              <p className="card-text fw-bold"><i class={`bi bi-circle-fill text-${status}`}></i> {status} - {species}</p>
+              <p className="card-text fw-bold"><i className={`bi bi-circle-fill text-${status}`}></i> {status} - {species}</p>
               {/* <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p> */}
             </div>
           </div>

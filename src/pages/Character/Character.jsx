@@ -59,8 +59,8 @@ const Home = () => {
 
       <div className="row mt-3">
         <div className="col-12 col-md-4 mb-3 ">
-          <div className='mb-2'>
-            <label htmlFor="Status" className="form-label">Status</label>
+          <div className='mb-2' >
+            <label htmlFor="Status" className="form-label" >Status</label>
             <Select
               onChange={statusSelectChange}
               defaultValue={[optionStatusCharacter[0]]}
@@ -69,6 +69,8 @@ const Home = () => {
               options={optionStatusCharacter}
               className="basic-multi-select"
               classNamePrefix="select"
+              theme={'dark'}
+              
             />
           </div>
           <div className='mb-2'>
