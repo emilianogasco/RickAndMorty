@@ -67,10 +67,8 @@ const Home = () => {
               // isMulti
               name="Status Character"
               options={optionStatusCharacter}
-              className="basic-multi-select"
+              className="basic-multi-select text-dark "
               classNamePrefix="select"
-              theme={'dark'}
-              
             />
           </div>
           <div className='mb-2'>
@@ -79,9 +77,9 @@ const Home = () => {
               onChange={statusGenderChange}
               defaultValue={[optionGenderCharacter[0]]}
               // isMulti
-              name="Status Character"
+              name="Gender"
               options={optionGenderCharacter}
-              className="basic-multi-select"
+              className="basic-multi-select text-dark "
               classNamePrefix="select"
             />
           </div>
@@ -93,7 +91,7 @@ const Home = () => {
               // isMulti
               name="Status Character"
               options={optionSpeciesCharacter}
-              className="basic-multi-select"
+              className="basic-multi-select text-dark " 
               classNamePrefix="select"
             />
           </div>
