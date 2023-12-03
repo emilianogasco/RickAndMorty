@@ -32,9 +32,9 @@ const Navbar = () => {
               <ButtonNav texto={'Character'} />
             </ul>
             {theme == "light" ? 
-            <button className="btn btn-outline-dark" onClick={handleChangeTheme}><i className="bi bi-moon-stars-fill"></i></button>
+            <button className="btn btn-outline-dark btn-sm" onClick={handleChangeTheme}><i className="bi bi-moon-stars-fill"></i></button>
             :
-            <button className="btn btn-outline-light" onClick={handleChangeTheme}><i className="bi bi-moon-stars-fill"></i></button>
+            <button className="btn btn-outline-light btn-sm" onClick={handleChangeTheme}><i className="bi bi-moon-stars-fill"></i></button>
 
             }
             

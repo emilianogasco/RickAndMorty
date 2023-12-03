@@ -18,5 +18,8 @@ export const optionSpeciesCharacter = [
   { value: 'Mythological Creature', label: 'Mythological Creature' },
   { value: 'Robot', label: 'Robot' },
   { value: 'Animal', label: 'Animal' },
+  { value: 'Disease', label: 'Disease' },
+  { value: 'cronenberg', label: 'Cronenberg' },
+  { value: 'Humanoid', label: 'Humanoid' },
   { value: 'unknown', label: 'Unknown' },
 ];
