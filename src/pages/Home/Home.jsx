@@ -65,15 +65,18 @@ const Home = () => {
             color={'danger'}
           /> : ''
         }
-        <ButtonUpdate handleUpdateClick={handleUpdateClick} />
-        {spinnerDisplay ?
-          <Spinner display={spinnerDisplay} /> : ''
+        {
+          spinnerDisplay
+            ?
+            <Spinner display={spinnerDisplay} />
+            :
+            character.map((character, index) => (
+              <Item key={index} name={character.name} species={character.species} img={character.image} />
+            )) 
         }
 
 
-        {character.map((character, index) => (
-          <Item key={index} name={character.name} species={character.species} img={character.image} />
-        ))}
+       
 
 
       </div>
