@@ -47,6 +47,7 @@ const Home = () => {
   const handleUpdateClick = () => {
     setUpdate(true)
     setSpinnerDisplay(true)
+    setPage(Math.floor(Math.random() * 44))
   };
 
   return (
@@ -75,7 +76,7 @@ const Home = () => {
           <Spinner display={spinnerDisplay} />
           :
           character.map((character, index) => (
-            <Item key={index} name={character.name} species={character.species} img={character.image} />
+            <Item key={index} name={character.name} species={character.species} img={character.image} status={character.status} />
           ))
 
         }

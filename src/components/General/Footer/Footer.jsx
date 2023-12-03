@@ -3,7 +3,7 @@ import ButtonNav from '../../Specific/ButtonNav/ButtonNav'
 
 const Footer = () => {
   return (
-    <div className="container">
+    <div className="container py-3">
       <footer>
         <ul className="nav justify-content-center border-bottom  mb-3 ">
           <ButtonNav texto={'Home'} style={'text-muted'} />

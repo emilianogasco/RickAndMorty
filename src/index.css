@@ -10,3 +10,12 @@ background-color: #202329;
 .text-bg-unknown{
   background-color:var(--bs-dark-bg-subtle);
 }
+.text-Alive{
+  color:var(--bs-success);
+}
+.text-Dead{
+  color:var(--bs-danger);
+}
+.text-unknown{
+  color:var(--bs-dark-bg-subtle);
+}
