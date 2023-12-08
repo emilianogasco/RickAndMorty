@@ -103,6 +103,7 @@ const Characters = () => {
             placeHolder={'Escribe un nombre'}
             name={name}
             setName={setName}
+            setPage={setPage}
           />
           <div className="row mt-2">
           {error ?

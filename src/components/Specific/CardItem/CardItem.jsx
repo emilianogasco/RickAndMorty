@@ -27,7 +27,7 @@ const CardItem = ({ name, status, species, image, gender, id }) => {
       <div className="card" >
         <img src={image} className="card-img-top" alt="..." />
         <div className="card-body">
-          <Link to={`/Character/${id}`} className="card-title h5 text-decoration-none">{name}</Link>
+          <Link to={`/Character/${id}`} className="card-title h5  link-offset-2 link-offset-1-hover link-underline link-underline-opacity-0 link-underline-opacity-100-hover" >{name}</Link>
           {/* <h5 className="card-title">{name}</h5> */}
           <p className="card-text">Species: {species}</p>
           <p className="card-text">Gender: {gender}</p>

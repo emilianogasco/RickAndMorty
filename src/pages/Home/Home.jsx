@@ -49,7 +49,7 @@ const Home = () => {
   const handleUpdateClick = () => {
     setUpdate(true)
     setSpinnerDisplay(true)
-    setPage(Math.floor(Math.random() * 44))
+    setPage(Math.floor(Math.random() * 43))
   };
 
   return (
